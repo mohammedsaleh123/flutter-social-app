@@ -63,15 +63,21 @@ class AuthController extends GetxController {
   Future<void> login() async {
     isLogin = true;
     update();
-    AuthService().login(
-      loginEmailController.text,
-      loginPasswordController.text,
-    );
-    isLogin = false;
-    Get.off(() => const NavBarView());
-    loginEmailController.clear();
-    loginPasswordController.clear();
-    update();
+    try {
+      bool isLoginDone = await AuthService().login(
+        loginEmailController.text,
+        loginPasswordController.text,
+      );
+      if (isLoginDone) {
+        isLogin = false;
+        Get.off(() => const NavBarView());
+        loginEmailController.clear();
+        loginPasswordController.clear();
+        update();
+      }
+    } catch (e) {
+      Get.snackbar('error', e.toString());
+    }
   }
 
   Future<void> loginWithGoogle() async {

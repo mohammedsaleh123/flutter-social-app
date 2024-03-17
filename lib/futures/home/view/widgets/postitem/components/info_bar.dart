@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:socialapp/core/app_colors.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/service/auth_service.dart';
 import 'package:socialapp/futures/service/post_service.dart';
+import 'package:socialapp/futures/userprofile/view/user_profile_view.dart';
 
 // ignore: must_be_immutable
 class InfoBar extends StatelessWidget {
@@ -36,13 +38,18 @@ class InfoBar extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(50.sp),
-                    child: Image.network(
-                      snapshot.data!.profileImage,
-                      width: 50.sp,
-                      height: 50.sp,
-                      fit: BoxFit.fill,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => UserProfileView(user: snapshot.data!));
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50.sp),
+                      child: Image.network(
+                        snapshot.data!.profileImage,
+                        width: 50.sp,
+                        height: 50.sp,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   SizedBox(width: 10.sp),

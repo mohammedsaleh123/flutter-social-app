@@ -14,10 +14,14 @@ class AuthService {
     return user;
   }
 
-  Future<UserCredential?> login(String email, String password) async {
-    UserCredential user =
-        await auth.signInWithEmailAndPassword(email: email, password: password);
-    return user;
+  Future<bool> login(String email, String password) async {
+    try {
+      await auth.signInWithEmailAndPassword(email: email, password: password);
+      return true;
+    } catch (e) {
+      Get.snackbar('error', e.toString());
+    }
+    return false;
   }
 
   Future<void> resetPassword(String email) async {
@@ -49,9 +53,8 @@ class AuthService {
   }
 
   Stream<UserModel> getCurrentUser() {
-    User? user = auth.currentUser;
     Stream<DocumentSnapshot<Map<String, dynamic>>> snapshot =
-        firestore.collection('users').doc(user!.uid).snapshots();
+        firestore.collection('users').doc(auth.currentUser!.uid).snapshots();
     return snapshot.map((event) {
       return UserModel.fromJson(event.data() as Map<String, dynamic>);
     });
