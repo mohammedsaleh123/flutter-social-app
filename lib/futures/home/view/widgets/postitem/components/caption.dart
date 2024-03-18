@@ -2,7 +2,7 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 
 // ignore: must_be_immutable
 class Caption extends StatelessWidget {
@@ -14,7 +14,7 @@ class Caption extends StatelessWidget {
     return Row(
       children: [
         StreamBuilder<UserModel>(
-            stream: AuthService().getUser(post.uid),
+            stream: UserService().getUser(post.uid),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(

@@ -4,7 +4,7 @@ import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/comment/view/comment_body.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 
 // ignore: must_be_immutable
 class CommentView extends StatelessWidget {
@@ -16,7 +16,7 @@ class CommentView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: StreamBuilder<UserModel>(
-            stream: AuthService().getUser(post.uid),
+            stream: UserService().getUser(post.uid),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(

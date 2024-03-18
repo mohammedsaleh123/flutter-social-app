@@ -4,6 +4,7 @@ import 'package:socialapp/core/extension/padding_extension.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 import 'package:socialapp/futures/service/post_service.dart';
 
 // ignore: must_be_immutable
@@ -66,34 +67,59 @@ class UserProfileInfo extends StatelessWidget {
                 );
               }),
         ),
-        SizedBox(
-          height: 100.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              CustomText(
-                text: 'followers',
-              ),
-              CustomText(
-                text: user.followers.length.toString(),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 100.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              CustomText(
-                text: 'following',
-              ),
-              CustomText(
-                text: user.following.length.toString(),
-              ),
-            ],
-          ),
-        ),
+        StreamBuilder<UserModel>(
+            stream: UserService().getUser(user.uid),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              }
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 100.h,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CustomText(
+                          text: 'followers',
+                        ),
+                        CustomText(
+                          text: snapshot.data!.followers != null
+                              ? snapshot.data!.followers!.length.toString()
+                              : '0',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 50.w,
+                  ),
+                  SizedBox(
+                    height: 100.h,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CustomText(
+                          text: 'following',
+                        ),
+                        CustomText(
+                          text: snapshot.data!.following != null
+                              ? snapshot.data!.following!.length.toString()
+                              : '0',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            }),
       ],
     ).padding(12.w, 6.h);
   }

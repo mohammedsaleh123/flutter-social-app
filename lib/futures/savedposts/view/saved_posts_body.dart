@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:socialapp/futures/home/view/widgets/postitem/post_item.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 import 'package:socialapp/futures/service/post_service.dart';
 
 class SavedPostsBody extends StatelessWidget {
@@ -11,7 +11,7 @@ class SavedPostsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UserModel>(
-      stream: AuthService().getCurrentUser(),
+      stream: UserService().getCurrentUser(),
       builder: (context, user) {
         if (user.connectionState == ConnectionState.waiting) {
           return const Center(

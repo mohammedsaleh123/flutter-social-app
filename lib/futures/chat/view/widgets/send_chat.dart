@@ -5,7 +5,7 @@ import 'package:socialapp/core/extension/padding_extension.dart';
 import 'package:socialapp/core/widgets/custom_text_field.dart';
 import 'package:socialapp/futures/controller/chat_controller.dart';
 import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 
 // ignore: must_be_immutable
 class SendChat extends StatelessWidget {
@@ -31,7 +31,7 @@ class SendChat extends StatelessWidget {
           Row(
             children: [
               StreamBuilder(
-                  stream: AuthService().getCurrentUser(),
+                  stream: UserService().getCurrentUser(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(

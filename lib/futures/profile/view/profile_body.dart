@@ -8,7 +8,7 @@ import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/profile/view/widgets/profile_info.dart';
 import 'package:socialapp/futures/profile/view/widgets/user_posts.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -17,7 +17,7 @@ class ProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const ProfileInfo(),
+        ProfileInfo(),
         CustomButton(
           onPressed: () {},
           color: offLightC.withOpacity(0.5),
@@ -27,7 +27,7 @@ class ProfileBody extends StatelessWidget {
         ),
         SizedBox(height: 20.h),
         StreamBuilder<UserModel>(
-            stream: AuthService().getCurrentUser(),
+            stream: UserService().getCurrentUser(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(child: CircularProgressIndicator());

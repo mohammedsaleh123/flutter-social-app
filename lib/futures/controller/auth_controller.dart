@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 import 'package:socialapp/futures/navbar/nav_bar_view.dart';
 import 'package:uuid/uuid.dart';
 
@@ -64,7 +64,7 @@ class AuthController extends GetxController {
     isLogin = true;
     update();
     try {
-      bool isLoginDone = await AuthService().login(
+      bool isLoginDone = await UserService().login(
         loginEmailController.text,
         loginPasswordController.text,
       );
@@ -83,17 +83,14 @@ class AuthController extends GetxController {
   Future<void> loginWithGoogle() async {
     isLoginWithGoogle = true;
     update();
-    UserCredential cred = await AuthService().loginWithGoogle();
-    await firestore.collection('users').doc(cred.user!.uid).set(UserModel(
-          uid: auth.currentUser!.uid,
-          userName: auth.currentUser!.displayName!,
-          email: auth.currentUser!.email!,
-          profileImage: auth.currentUser!.photoURL!,
-          following: [],
-          followers: [],
-          savedChats: [],
-          createdAt: Timestamp.now(),
-        ).toJson());
+    UserCredential cred = await UserService().loginWithGoogle();
+    await firestore.collection('users').doc(cred.user!.uid).update({
+      'uid': cred.user!.uid,
+      'userName': cred.user!.displayName!,
+      'email': cred.user!.email!,
+      'profileImage': cred.user!.photoURL!,
+      'createdAt': Timestamp.now(),
+    });
     isLoginWithGoogle = false;
     Get.off(() => const NavBarView());
     loginEmailController.clear();
@@ -113,7 +110,7 @@ class AuthController extends GetxController {
     Reference ref = storage.ref().child('profilePictures/$uuid');
     await ref.putFile(profileImage!);
     final image = await ref.getDownloadURL();
-    UserCredential user = await AuthService().register(
+    UserCredential user = await UserService().register(
       registerEmailController.text,
       registerPasswordController.text,
     );

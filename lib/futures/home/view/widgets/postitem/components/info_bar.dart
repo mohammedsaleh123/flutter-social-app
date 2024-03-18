@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:socialapp/core/app_colors.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 import 'package:socialapp/futures/service/post_service.dart';
 import 'package:socialapp/futures/userprofile/view/user_profile_view.dart';
 
@@ -22,7 +22,7 @@ class InfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UserModel>(
-        stream: AuthService().getUser(post.uid),
+        stream: UserService().getUser(post.uid),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(

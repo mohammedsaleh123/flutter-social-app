@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
@@ -7,6 +8,7 @@ import 'package:socialapp/futures/service/post_service.dart';
 class UserPosts extends StatelessWidget {
   UserPosts({super.key, required this.snapshot});
   AsyncSnapshot<UserModel> snapshot;
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class UserPosts extends StatelessWidget {
         builder: (context, posts) {
           final List<PostModel> data = posts.data != null
               ? posts.data!
-                  .where((element) => element.uid == snapshot.data!.uid)
+                  .where((element) => element.uid == auth.currentUser!.uid)
                   .toList()
               : [];
           if (posts.connectionState == ConnectionState.waiting) {

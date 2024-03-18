@@ -13,13 +13,11 @@ import 'package:uuid/uuid.dart';
 class ChatController extends GetxController {
   // @override
   // void onInit() {
-  //   // TODO: implement onInit
   //   super.onInit();
   // }
 
   // @override
   // void dispose() {
-  //   // TODO: implement dispose
   //   super.dispose();
   // }
 
@@ -60,6 +58,7 @@ class ChatController extends GetxController {
         createdAt: Timestamp.now(),
         messageImage: url ?? '',
       ).toJson(),
+      reciverId,
     );
 
     messageController.clear();

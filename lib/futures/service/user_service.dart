@@ -4,19 +4,33 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 
-class AuthService {
+class UserService {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<UserCredential> register(String email, String password) async {
     final UserCredential user = await auth.createUserWithEmailAndPassword(
         email: email, password: password);
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .update({
+      'last_seen': Timestamp.now(),
+      'is_online': true,
+    });
     return user;
   }
 
   Future<bool> login(String email, String password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(auth.currentUser!.uid)
+          .update({
+        'last_seen': Timestamp.now(),
+        'is_online': true,
+      });
       return true;
     } catch (e) {
       Get.snackbar('error', e.toString());
@@ -40,7 +54,6 @@ class AuthService {
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
-
       return await auth.signInWithCredential(credential);
     } catch (error) {
       Get.snackbar('error', error.toString());
@@ -48,7 +61,7 @@ class AuthService {
     }
   }
 
-  Future<void> logout() async {
+  Future<void> signOut() async {
     await auth.signOut();
   }
 
@@ -67,6 +80,17 @@ class AuthService {
     });
   }
 
+  Stream<List<UserModel>> getAllUsers() {
+    final snapshot = firestore.collection('users').snapshots();
+    return snapshot.map((event) {
+      return event.docs
+          .map((e) => UserModel.fromJson(e.data()))
+          .toList()
+          .where((element) => element.uid != auth.currentUser!.uid)
+          .toList();
+    });
+  }
+
   Future<void> updateUser(String uid, Map<String, dynamic> data) async {
     await firestore.collection('users').doc(uid).update(data);
   }
@@ -75,14 +99,20 @@ class AuthService {
     await firestore.collection('users').doc(uid).delete();
   }
 
-  Future<void> followUser(String uid) async {
-    await firestore.collection('users').doc(uid).update({
+  Future<void> followUser(String otherUserId) async {
+    await firestore.collection('users').doc(auth.currentUser!.uid).update({
+      'following': FieldValue.arrayUnion([otherUserId])
+    });
+    await firestore.collection('users').doc(otherUserId).update({
       'followers': FieldValue.arrayUnion([auth.currentUser!.uid])
     });
   }
 
-  Future<void> unfollowUser(String uid) async {
-    await firestore.collection('users').doc(uid).update({
+  Future<void> unfollowUser(String otherUserId) async {
+    await firestore.collection('users').doc(auth.currentUser!.uid).update({
+      'following': FieldValue.arrayRemove([otherUserId])
+    });
+    await firestore.collection('users').doc(otherUserId).update({
       'followers': FieldValue.arrayRemove([auth.currentUser!.uid])
     });
   }

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socialapp/core/extension/padding_extension.dart';
@@ -5,15 +7,18 @@ import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/service/post_service.dart';
-import 'package:socialapp/futures/service/auth_service.dart';
+import 'package:socialapp/futures/service/user_service.dart';
 
+// ignore: must_be_immutable
 class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({super.key});
+  ProfileInfo({super.key});
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UserModel>(
-        stream: AuthService().getCurrentUser(),
+        stream: UserService().getCurrentUser(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -32,14 +37,18 @@ class ProfileInfo extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(50.sp),
                       child: Image.network(
-                        snapshot.data!.profileImage,
+                        snapshot.data != null
+                            ? snapshot.data!.profileImage
+                            : auth.currentUser!.photoURL.toString(),
                         height: 50.h,
                         width: 50.w,
                       ),
                     ),
                     SizedBox(height: 5.h),
                     CustomText(
-                      text: snapshot.data!.userName,
+                      text: snapshot.data != null
+                          ? snapshot.data!.userName
+                          : auth.currentUser!.displayName!,
                       //fontSize: 16.sp,
                     ),
                   ],
@@ -68,7 +77,7 @@ class ProfileInfo extends StatelessWidget {
                           CustomText(
                             text: posts.data!
                                 .where((element) =>
-                                    element.uid == snapshot.data!.uid)
+                                    element.uid == auth.currentUser!.uid)
                                 .length
                                 .toString(),
                           ),
@@ -85,7 +94,9 @@ class ProfileInfo extends StatelessWidget {
                       text: 'followers',
                     ),
                     CustomText(
-                      text: snapshot.data!.followers.length.toString(),
+                      text: snapshot.data!.followers != null
+                          ? snapshot.data!.followers!.length.toString()
+                          : '0',
                     ),
                   ],
                 ),
@@ -99,7 +110,9 @@ class ProfileInfo extends StatelessWidget {
                       text: 'following',
                     ),
                     CustomText(
-                      text: snapshot.data!.following.length.toString(),
+                      text: snapshot.data!.following != null
+                          ? snapshot.data!.following!.length.toString()
+                          : '0',
                     ),
                   ],
                 ),

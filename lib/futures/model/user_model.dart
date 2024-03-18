@@ -5,9 +5,9 @@ class UserModel {
   final String userName;
   final String email;
   final String profileImage;
-  final List following;
-  final List followers;
-  final List savedChats;
+  List? following;
+  List? followers;
+  List? savedChats;
   final Timestamp createdAt;
 
   UserModel({
@@ -15,9 +15,9 @@ class UserModel {
     required this.userName,
     required this.email,
     required this.profileImage,
-    required this.following,
-    required this.followers,
-    required this.savedChats,
+    this.following,
+    this.followers,
+    this.savedChats,
     required this.createdAt,
   });
 
