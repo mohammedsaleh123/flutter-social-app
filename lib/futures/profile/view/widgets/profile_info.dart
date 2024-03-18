@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:socialapp/core/extension/padding_extension.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
+import 'package:socialapp/futures/followers/view/followers_view.dart';
+import 'package:socialapp/futures/following/view/following_view.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/service/post_service.dart';
@@ -42,6 +46,7 @@ class ProfileInfo extends StatelessWidget {
                             : auth.currentUser!.photoURL.toString(),
                         height: 50.h,
                         width: 50.w,
+                        fit: BoxFit.fill,
                       ),
                     ),
                     SizedBox(height: 5.h),
@@ -90,8 +95,13 @@ class ProfileInfo extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CustomText(
-                      text: 'followers',
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => const FollowersView());
+                      },
+                      child: CustomText(
+                        text: 'followers',
+                      ),
                     ),
                     CustomText(
                       text: snapshot.data!.followers != null
@@ -106,8 +116,13 @@ class ProfileInfo extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CustomText(
-                      text: 'following',
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => const FollowingView());
+                      },
+                      child: CustomText(
+                        text: 'following',
+                      ),
                     ),
                     CustomText(
                       text: snapshot.data!.following != null

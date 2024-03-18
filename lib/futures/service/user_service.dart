@@ -8,29 +8,13 @@ class UserService {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<UserCredential> register(String email, String password) async {
-    final UserCredential user = await auth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(auth.currentUser!.uid)
-        .update({
-      'last_seen': Timestamp.now(),
-      'is_online': true,
-    });
-    return user;
+  Future<void> register(String email, String password) async {
+    await auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 
   Future<bool> login(String email, String password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(auth.currentUser!.uid)
-          .update({
-        'last_seen': Timestamp.now(),
-        'is_online': true,
-      });
       return true;
     } catch (e) {
       Get.snackbar('error', e.toString());

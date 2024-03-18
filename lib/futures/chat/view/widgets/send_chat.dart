@@ -46,9 +46,10 @@ class SendChat extends StatelessWidget {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(50.sp),
                       child: Image.network(snapshot.data!.profileImage,
-                          height: 50, width: 50),
+                          height: 45, width: 45, fit: BoxFit.fill),
                     );
                   }),
+              SizedBox(width: 10.sp),
               Expanded(
                 child: CustomTextField(
                   hintText: 'comment',

@@ -64,17 +64,16 @@ class AuthController extends GetxController {
     isLogin = true;
     update();
     try {
-      bool isLoginDone = await UserService().login(
+      await UserService().login(
         loginEmailController.text,
         loginPasswordController.text,
       );
-      if (isLoginDone) {
-        isLogin = false;
-        Get.off(() => const NavBarView());
-        loginEmailController.clear();
-        loginPasswordController.clear();
-        update();
-      }
+
+      isLogin = false;
+      Get.off(() => const NavBarView());
+      loginEmailController.clear();
+      loginPasswordController.clear();
+      update();
     } catch (e) {
       Get.snackbar('error', e.toString());
     }
@@ -110,11 +109,11 @@ class AuthController extends GetxController {
     Reference ref = storage.ref().child('profilePictures/$uuid');
     await ref.putFile(profileImage!);
     final image = await ref.getDownloadURL();
-    UserCredential user = await UserService().register(
+    await UserService().register(
       registerEmailController.text,
       registerPasswordController.text,
     );
-    await firestore.collection('users').doc(user.user!.uid).set(
+    await firestore.collection('users').doc(auth.currentUser!.uid).set(
           UserModel(
             uid: auth.currentUser!.uid,
             userName: registerNameController.text,
