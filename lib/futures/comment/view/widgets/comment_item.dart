@@ -6,7 +6,7 @@ import 'package:socialapp/core/app_colors.dart';
 import 'package:socialapp/core/extension/center_extension.dart';
 import 'package:socialapp/core/extension/padding_extension.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/helper/helper.dart';
+import 'package:socialapp/core/helper/helper.dart';
 import 'package:socialapp/model/comment_model.dart';
 import 'package:socialapp/model/post_model.dart';
 import 'package:socialapp/model/user_model.dart';

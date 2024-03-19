@@ -4,7 +4,7 @@ import 'package:socialapp/core/app_colors.dart';
 import 'package:socialapp/futures/addpost/view/add_post_view.dart';
 import 'package:socialapp/futures/followers/view/followers_view.dart';
 import 'package:socialapp/futures/following/view/following_view.dart';
-import 'package:socialapp/futures/savedposts/view/saved_posts_view.dart';
+import 'package:socialapp/futures/saved_posts/view/saved_posts_view.dart';
 import 'package:socialapp/futures/home/view/home_view.dart';
 import 'package:socialapp/futures/profile/view/profile_view.dart';
 

@@ -5,7 +5,7 @@ import 'package:socialapp/service/post_service.dart';
 
 import 'package:get/get.dart';
 import 'package:socialapp/controller/user_profile_controller.dart';
-import 'package:socialapp/futures/userposts/view/user_posts_view.dart';
+import 'package:socialapp/futures/user_posts/view/user_posts_view.dart';
 
 // ignore: must_be_immutable
 class UserProfilePosts extends StatelessWidget {

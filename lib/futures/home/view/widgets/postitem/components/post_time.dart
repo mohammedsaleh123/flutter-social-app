@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/helper/helper.dart';
+import 'package:socialapp/core/helper/helper.dart';
 import 'package:socialapp/model/post_model.dart';
 
 // ignore: must_be_immutable

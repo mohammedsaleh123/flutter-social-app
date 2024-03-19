@@ -30,7 +30,7 @@ class PostItem extends StatelessWidget {
                     post.postImage,
                     height: Get.height * 0.4,
                     width: Get.width,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ).padding(6.w, 6.h)
                 : Stack(
                     children: [

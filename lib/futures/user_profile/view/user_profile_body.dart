@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socialapp/model/user_model.dart';
-import 'package:socialapp/futures/userprofile/view/widgets/profile_button.dart';
-import 'package:socialapp/futures/userprofile/view/widgets/user_profile_info.dart';
-import 'package:socialapp/futures/userprofile/view/widgets/user_profile_posts.dart';
+import 'package:socialapp/futures/user_profile/view/widgets/profile_button.dart';
+import 'package:socialapp/futures/user_profile/view/widgets/user_profile_info.dart';
+import 'package:socialapp/futures/user_profile/view/widgets/user_profile_posts.dart';
 
 // ignore: must_be_immutable
 class UserProfileBody extends StatelessWidget {

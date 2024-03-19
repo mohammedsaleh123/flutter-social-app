@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/savedposts/view/saved_posts_body.dart';
+import 'package:socialapp/futures/saved_posts/view/saved_posts_body.dart';
 
 class SavedPostsView extends StatelessWidget {
   const SavedPostsView({super.key});
