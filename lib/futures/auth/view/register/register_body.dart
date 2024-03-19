@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:socialapp/controller/auth_controller.dart';
 import 'package:socialapp/core/extension/padding_extension.dart';
-import 'package:socialapp/futures/controller/auth_controller.dart';
 import 'package:socialapp/futures/auth/view/login/login_view.dart';
 import 'package:socialapp/futures/auth/view/widgets/swith_betwen_login_and_register.dart';
 import 'package:socialapp/futures/auth/view/register/widgets/confirm_password_field.dart';

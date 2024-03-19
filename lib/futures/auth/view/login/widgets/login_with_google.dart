@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:socialapp/controller/auth_controller.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/controller/auth_controller.dart';
 
 class LogInWithGoogle extends StatelessWidget {
   LogInWithGoogle({super.key});

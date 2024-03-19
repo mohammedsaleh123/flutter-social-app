@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:socialapp/controller/add_post_controller.dart';
 import 'package:socialapp/core/extension/center_extension.dart';
-import 'package:socialapp/futures/controller/add_post_controller.dart';
 
 class PickePostImage extends StatelessWidget {
   PickePostImage({
@@ -17,8 +17,13 @@ class PickePostImage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
+            onPressed: () {
+              controller.pickImage('gallery', true);
+            },
+            icon: Icon(Icons.video_camera_back, size: 30.sp).center()),
+        IconButton(
           onPressed: () {
-            controller.pickImage('camera');
+            controller.pickImage('camera', false);
           },
           icon: Icon(
             Icons.camera,
@@ -27,7 +32,7 @@ class PickePostImage extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            controller.pickImage('gallery');
+            controller.pickImage('gallery', false);
           },
           icon: Icon(
             Icons.photo_library,

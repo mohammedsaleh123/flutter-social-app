@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:socialapp/futures/controller/auth_controller.dart';
+import 'package:socialapp/controller/auth_controller.dart';
 import 'package:socialapp/futures/auth/view/login/login_body.dart';
 
 // ignore: must_be_immutable

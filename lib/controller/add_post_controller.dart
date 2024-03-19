@@ -36,31 +36,39 @@ class AddPostController extends GetxController {
   }
 
   Future<void> pickImage(String type, bool isVideo) async {
-    if (isVideo) {
+    if (isVideo == true) {
       postImage = null;
       ImagePicker imagePicker = ImagePicker();
       XFile? videoVile = await imagePicker.pickVideo(
         source: type == 'gallery' ? ImageSource.gallery : ImageSource.camera,
       );
-      update();
       if (videoVile != null) {
         postVideo = File(videoVile.path);
         postVideoController = VideoPlayerController.file(postVideo!)
-          ..initialize().then((value) => update());
+          ..initialize();
         update();
       }
     } else {
-      postVideo = null;
+      //postVideo = null;
       ImagePicker imagePicker = ImagePicker();
       XFile? file = await imagePicker.pickImage(
         source: type == 'gallery' ? ImageSource.gallery : ImageSource.camera,
       );
-      update();
       if (file != null) {
         postImage = File(file.path);
         update();
       }
     }
+  }
+
+  VideoPlayer? displayVideo() {
+    if (postVideo != null) {
+      postVideoController =
+          VideoPlayerController.networkUrl(Uri.parse(postVideo!.path));
+      postVideoController!.initialize();
+      return VideoPlayer(postVideoController!);
+    }
+    return null;
   }
 
   void switchBetweenImageAndVideo() {

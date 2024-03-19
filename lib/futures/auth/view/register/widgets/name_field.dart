@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:socialapp/controller/auth_controller.dart';
 import 'package:socialapp/core/widgets/custom_text_field.dart';
-import 'package:socialapp/futures/controller/auth_controller.dart';
 
 // ignore: must_be_immutable
 class NameField extends StatelessWidget {

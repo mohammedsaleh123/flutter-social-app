@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:socialapp/controller/comment_controller.dart';
 import 'package:socialapp/core/widgets/custom_text_field.dart';
-import 'package:socialapp/futures/controller/comment_controller.dart';
 import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/service/user_service.dart';
 
