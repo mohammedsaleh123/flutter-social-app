@@ -3,9 +3,14 @@ import 'package:socialapp/futures/model/post_model.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/service/post_service.dart';
 
+import 'package:get/get.dart';
+import 'package:socialapp/controller/user_profile_controller.dart';
+import 'package:socialapp/futures/userposts/view/user_posts_view.dart';
+
 // ignore: must_be_immutable
 class UserProfilePosts extends StatelessWidget {
   UserProfilePosts({super.key, required this.user});
+  UserProfileController controller = Get.put(UserProfileController());
   UserModel user;
 
   @override
@@ -32,7 +37,27 @@ class UserProfilePosts extends StatelessWidget {
                   crossAxisCount: 3),
               itemCount: data.length,
               itemBuilder: (BuildContext context, int index) {
-                return Image.network(data[index].postImage, fit: BoxFit.fill);
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(() => UserPostsView(post: data[index], user: user));
+                  },
+                  child: SizedBox(
+                    child: data[index].postImage != ''
+                        ? Image.network(data[index].postImage, fit: BoxFit.fill)
+                        : Stack(
+                            children: [
+                              controller.displayVideo(data[index].postVideo!),
+                              Align(
+                                alignment: Alignment.center,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.play_arrow),
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                );
               },
             ),
           );

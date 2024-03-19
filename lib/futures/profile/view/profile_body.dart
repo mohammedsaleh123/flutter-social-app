@@ -7,8 +7,8 @@ import 'package:socialapp/core/widgets/custom_button.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/model/user_model.dart';
 import 'package:socialapp/futures/profile/view/widgets/profile_info.dart';
-import 'package:socialapp/futures/profile/view/widgets/user_posts.dart';
 import 'package:socialapp/futures/service/user_service.dart';
+import 'package:socialapp/futures/profile/view/widgets/profile_posts.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -35,7 +35,7 @@ class ProfileBody extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               }
-              return UserPosts(snapshot: snapshot);
+              return ProfilePosts(snapshot: snapshot);
             }),
       ],
     );
