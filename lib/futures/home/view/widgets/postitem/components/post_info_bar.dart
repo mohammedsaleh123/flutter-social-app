@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/model/comment_model.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/service/comment_service.dart';
+import 'package:socialapp/model/comment_model.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/service/comment_service.dart';
 
 // ignore: must_be_immutable
 class PostInfoBar extends StatelessWidget {

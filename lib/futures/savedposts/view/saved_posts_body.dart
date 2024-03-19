@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:socialapp/futures/home/view/widgets/postitem/post_item.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/user_service.dart';
-import 'package:socialapp/futures/service/post_service.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/model/user_model.dart';
+import 'package:socialapp/service/user_service.dart';
+import 'package:socialapp/service/post_service.dart';
 
 class SavedPostsBody extends StatelessWidget {
   const SavedPostsBody({super.key});

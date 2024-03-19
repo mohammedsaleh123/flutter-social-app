@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/post_service.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/model/user_model.dart';
+import 'package:socialapp/service/post_service.dart';
 
 import 'package:get/get.dart';
 import 'package:socialapp/controller/user_profile_controller.dart';

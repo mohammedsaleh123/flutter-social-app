@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:socialapp/futures/comment/view/widgets/comment_item.dart';
-import 'package:socialapp/futures/model/comment_model.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/service/comment_service.dart';
+import 'package:socialapp/model/comment_model.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/service/comment_service.dart';
 
 class ListComment extends StatelessWidget {
   const ListComment({super.key, required this.post});

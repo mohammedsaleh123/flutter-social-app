@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:socialapp/futures/model/user_model.dart';
+import 'package:socialapp/model/user_model.dart';
 import 'package:socialapp/futures/navbar/nav_bar_view.dart';
-import 'package:socialapp/futures/service/user_service.dart';
+import 'package:socialapp/service/user_service.dart';
 import 'package:uuid/uuid.dart';
 
 class AuthController extends GetxController {

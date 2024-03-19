@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:socialapp/controller/chat_controller.dart';
 import 'package:socialapp/futures/chat/view/widgets/chat_list.dart';
 import 'package:socialapp/futures/chat/view/widgets/send_chat.dart';
-import 'package:socialapp/futures/model/user_model.dart';
+import 'package:socialapp/model/user_model.dart';
 
 // ignore: must_be_immutable
 class ChatBody extends StatelessWidget {

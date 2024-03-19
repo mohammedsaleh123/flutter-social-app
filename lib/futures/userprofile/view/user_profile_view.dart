@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/chat/view/chat_view.dart';
-import 'package:socialapp/futures/model/user_model.dart';
+import 'package:socialapp/model/user_model.dart';
 import 'package:socialapp/futures/userprofile/view/user_profile_body.dart';
 
 // ignore: must_be_immutable

@@ -6,8 +6,8 @@ import 'package:socialapp/core/app_colors.dart';
 import 'package:socialapp/core/extension/padding_extension.dart';
 import 'package:socialapp/core/widgets/custom_button.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/user_service.dart';
+import 'package:socialapp/model/user_model.dart';
+import 'package:socialapp/service/user_service.dart';
 
 // ignore: must_be_immutable
 class ProfileButton extends StatelessWidget {

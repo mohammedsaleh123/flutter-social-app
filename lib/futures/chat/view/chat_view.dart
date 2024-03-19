@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/chat/view/chat_body.dart';
-import 'package:socialapp/futures/model/user_model.dart';
+import 'package:socialapp/model/user_model.dart';
 
 class ChatView extends StatelessWidget {
   const ChatView({super.key, required this.user});

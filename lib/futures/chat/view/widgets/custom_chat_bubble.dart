@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socialapp/core/app_colors.dart';
 import 'package:socialapp/core/extension/padding_extension.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
-import 'package:socialapp/futures/model/chat_model.dart';
-import 'package:socialapp/futures/model/user_model.dart';
+import 'package:socialapp/model/chat_model.dart';
+import 'package:socialapp/model/user_model.dart';
 
 // ignore: must_be_immutable
 class CustomChatBubble extends StatelessWidget {

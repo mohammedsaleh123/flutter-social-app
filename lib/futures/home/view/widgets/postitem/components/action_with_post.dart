@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:socialapp/controller/add_post_controller.dart';
 import 'package:socialapp/futures/comment/view/comment_view.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/service/post_service.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/service/post_service.dart';
 
 // ignore: must_be_immutable
 class ActionWithPost extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:socialapp/futures/model/chat_model.dart';
+import 'package:socialapp/model/chat_model.dart';
 
 class ChatService {
   FirebaseAuth auth = FirebaseAuth.instance;

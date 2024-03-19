@@ -8,7 +8,7 @@ import 'package:socialapp/futures/home/view/widgets/postitem/components/caption.
 import 'package:socialapp/futures/home/view/widgets/postitem/components/info_bar.dart';
 import 'package:socialapp/futures/home/view/widgets/postitem/components/post_info_bar.dart';
 import 'package:socialapp/futures/home/view/widgets/postitem/components/post_time.dart';
-import 'package:socialapp/futures/model/post_model.dart';
+import 'package:socialapp/model/post_model.dart';
 
 // ignore: must_be_immutable
 class PostItem extends StatelessWidget {

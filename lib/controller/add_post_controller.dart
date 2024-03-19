@@ -5,8 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/service/post_service.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/service/post_service.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_player/video_player.dart';
 
@@ -24,6 +24,19 @@ class AddPostController extends GetxController {
   // void onInit() {
   //   super.onInit();
   // }
+
+  // @override
+  // void onReady() {
+  //   super.onReady();
+  // }
+
+  void onCloseScreen() {
+    captionController.text = '';
+    //postVideoController!.dispose();
+    postImage = null;
+    postVideo = null;
+    update();
+  }
 
   @override
   void dispose() {
@@ -49,7 +62,7 @@ class AddPostController extends GetxController {
         update();
       }
     } else {
-      //postVideo = null;
+      postVideo = null;
       ImagePicker imagePicker = ImagePicker();
       XFile? file = await imagePicker.pickImage(
         source: type == 'gallery' ? ImageSource.gallery : ImageSource.camera,
@@ -66,6 +79,7 @@ class AddPostController extends GetxController {
       postVideoController =
           VideoPlayerController.networkUrl(Uri.parse(postVideo!.path));
       postVideoController!.initialize();
+      postVideoController!.play();
       return VideoPlayer(postVideoController!);
     }
     return null;

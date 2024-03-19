@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:socialapp/futures/model/post_model.dart';
+import 'package:socialapp/model/post_model.dart';
 
 class PostServices {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;

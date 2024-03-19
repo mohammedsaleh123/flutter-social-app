@@ -13,7 +13,7 @@ import 'package:socialapp/futures/addpost/view/widgets/post_image.dart';
 // ignore: must_be_immutable
 class AddPostBody extends StatelessWidget {
   AddPostBody({super.key});
-  AddPostController controller = Get.put(AddPostController());
+  AddPostController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +31,22 @@ class AddPostBody extends StatelessWidget {
             textInputType: TextInputType.text,
           ),
           SizedBox(height: 20.h),
-          CustomButton(
-            onPressed: () {
-              if (controller.postImage != null) {
-                controller.addPost();
-              }
-            },
-            color: offLightC.withOpacity(0.5),
-            radius: 20.sp,
-            minWidth: Get.width,
-            child: controller.isPostLoading
-                ? const CircularProgressIndicator().padding(0, 14.h)
-                : CustomText(text: 'Add Post').padding(0, 14.h),
-          ),
+          GetBuilder<AddPostController>(builder: (controller) {
+            return CustomButton(
+              onPressed: () {
+                if (controller.postImage != null ||
+                    controller.postVideo != null) {
+                  controller.addPost();
+                }
+              },
+              color: offLightC.withOpacity(0.5),
+              radius: 20.sp,
+              minWidth: Get.width,
+              child: controller.isPostLoading
+                  ? const CircularProgressIndicator().padding(0, 14.h)
+                  : CustomText(text: 'Add Post').padding(0, 14.h),
+            );
+          }),
         ],
       ),
     );

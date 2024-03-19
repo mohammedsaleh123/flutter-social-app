@@ -18,11 +18,15 @@ class PickePostImage extends StatelessWidget {
       children: [
         IconButton(
             onPressed: () {
+              controller.postImage = null;
+              controller.postVideo = null;
               controller.pickImage('gallery', true);
             },
             icon: Icon(Icons.video_camera_back, size: 30.sp).center()),
         IconButton(
           onPressed: () {
+            controller.postImage = null;
+            controller.postVideo = null;
             controller.pickImage('camera', false);
           },
           icon: Icon(
@@ -32,6 +36,8 @@ class PickePostImage extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
+            controller.postImage = null;
+            controller.postVideo = null;
             controller.pickImage('gallery', false);
           },
           icon: Icon(

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:socialapp/controller/comment_controller.dart';
 import 'package:socialapp/futures/comment/view/widgets/list_comment.dart';
 import 'package:socialapp/futures/comment/view/widgets/send_comment.dart';
-import 'package:socialapp/futures/model/post_model.dart';
+import 'package:socialapp/model/post_model.dart';
 
 // ignore: must_be_immutable
 class CommentBody extends StatelessWidget {

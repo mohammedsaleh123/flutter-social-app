@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:socialapp/futures/model/comment_model.dart';
+import 'package:socialapp/model/comment_model.dart';
 
 class CommentService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;

@@ -6,8 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:socialapp/futures/model/chat_model.dart';
-import 'package:socialapp/futures/service/chat_service.dart';
+import 'package:socialapp/model/chat_model.dart';
+import 'package:socialapp/service/chat_service.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatController extends GetxController {

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:socialapp/controller/chat_controller.dart';
 import 'package:socialapp/futures/chat/view/widgets/custom_chat_bubble.dart';
-import 'package:socialapp/futures/model/chat_model.dart';
-import 'package:socialapp/futures/model/user_model.dart';
-import 'package:socialapp/futures/service/chat_service.dart';
+import 'package:socialapp/model/chat_model.dart';
+import 'package:socialapp/model/user_model.dart';
+import 'package:socialapp/service/chat_service.dart';
 
 // ignore: must_be_immutable
 class ListChat extends StatelessWidget {

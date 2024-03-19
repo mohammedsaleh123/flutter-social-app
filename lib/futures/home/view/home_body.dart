@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:socialapp/futures/home/view/widgets/postitem/post_item.dart';
-import 'package:socialapp/futures/model/post_model.dart';
-import 'package:socialapp/futures/service/post_service.dart';
+import 'package:socialapp/model/post_model.dart';
+import 'package:socialapp/service/post_service.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});

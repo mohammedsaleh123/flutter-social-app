@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:socialapp/core/widgets/custom_text.dart';
 import 'package:socialapp/futures/auth/view/login/login_view.dart';
 import 'package:socialapp/futures/home/view/home_body.dart';
-import 'package:socialapp/futures/service/user_service.dart';
+import 'package:socialapp/service/user_service.dart';
 
 // ignore: must_be_immutable
 class HomeView extends StatelessWidget {

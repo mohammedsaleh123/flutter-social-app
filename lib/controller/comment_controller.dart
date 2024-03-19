@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:socialapp/futures/model/comment_model.dart';
-import 'package:socialapp/futures/service/comment_service.dart';
+import 'package:socialapp/model/comment_model.dart';
+import 'package:socialapp/service/comment_service.dart';
 import 'package:uuid/uuid.dart';
 
 class CommentController extends GetxController {
