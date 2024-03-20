@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:socialapp/model/post_model.dart';
 import 'package:socialapp/service/post_service.dart';
+import 'package:uuid/uuid.dart';
 import 'package:video_player/video_player.dart';
 
 class EditPostController extends GetxController {
@@ -70,9 +71,11 @@ class EditPostController extends GetxController {
       String image,
       String video) async {
     isEditing = true;
+    final postImageuuid = const Uuid().v4();
+    final postVideouuid = const Uuid().v1();
     if (postVideo != null) {
       Reference ref =
-          storage.ref().child('posts/$postVideo').child('$postId.mp4');
+          storage.ref().child('posts/$postVideouuid').child('$postId.mp4');
       await ref.putFile(postVideo!);
       video = await ref.getDownloadURL();
       //video = postVideo!.path;
@@ -83,7 +86,7 @@ class EditPostController extends GetxController {
     }
     if (postImage != null) {
       Reference ref =
-          storage.ref().child('posts/$postImage').child('$postId.jpg');
+          storage.ref().child('posts/$postImageuuid').child('$postId.jpg');
       await ref.putFile(postImage!);
       image = await ref.getDownloadURL();
       //image = postImage!.path;

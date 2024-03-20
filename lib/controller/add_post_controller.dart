@@ -101,7 +101,7 @@ class AddPostController extends GetxController {
     if (postImage != null) {
       isPostLoading = true;
       final refImage =
-          storage.ref().child('posts/$imageFileName').child(postId);
+          storage.ref().child('posts/$imageFileName').child('$postId.jpg');
       await refImage.putFile(postImage!);
       imageUrl = await refImage.getDownloadURL();
     } else if (postVideo != null) {
