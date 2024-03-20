@@ -32,7 +32,7 @@ class EditPostController extends GetxController {
   bool isEditing = false;
   bool cleanup = false;
 
-  VideoPlayer? displayVideo(String videoUrl) {
+  VideoPlayer displayVideo(String videoUrl) {
     videoPlayerController =
         VideoPlayerController.networkUrl(Uri.parse(videoUrl));
     videoPlayerController!.initialize();
