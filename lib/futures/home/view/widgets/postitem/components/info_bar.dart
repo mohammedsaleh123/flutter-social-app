@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:socialapp/core/app_colors.dart';
+import 'package:socialapp/futures/edit%20-post/view/edit_post_view.dart';
 import 'package:socialapp/model/post_model.dart';
 import 'package:socialapp/model/user_model.dart';
 import 'package:socialapp/service/user_service.dart';
@@ -72,6 +73,15 @@ class InfoBar extends StatelessWidget {
                   if (value == 'unsave') {
                     PostServices()
                         .unsavePost(post.postId, auth.currentUser!.uid);
+                  }
+                  if (value == 'edit') {
+                    Get.to(
+                      () => EditPostView(
+                        user: snapshot.data!,
+                        post: post,
+                        caption: post.caption != '' ? post.caption : '',
+                      ),
+                    );
                   }
                 },
                 menuStyle: const MenuStyle(
