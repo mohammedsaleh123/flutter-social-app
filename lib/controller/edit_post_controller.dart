@@ -30,8 +30,9 @@ class EditPostController extends GetxController {
   File? postImage;
   File? postVideo;
   bool isEditing = false;
+  bool cleanup = false;
 
-  VideoPlayer displayVideo(String videoUrl) {
+  VideoPlayer? displayVideo(String videoUrl) {
     videoPlayerController =
         VideoPlayerController.networkUrl(Uri.parse(videoUrl));
     videoPlayerController!.initialize();
@@ -116,6 +117,7 @@ class EditPostController extends GetxController {
     postImage = null;
     postVideo = null;
     updateCaptionController.text = '';
+    cleanup = true;
     update();
   }
 
